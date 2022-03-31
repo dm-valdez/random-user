@@ -1,35 +1,47 @@
 import React from 'react'
+import { Button } from 'react-bootstrap';
+import { Card, CardGroup } from 'react-bootstrap';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import Spinner from 'react-bootstrap/Spinner'
+import { css } from "@emotion/react";
+import { PacmanLoader } from 'react-spinners';
+
+const override = css`
+  display: block;
+  margin: 300px auto;
+`;
 
 const RandomUser = ({ randomUsers, loading }) => {
     if (loading) {
         return (
-            <div className='d-flex justify-content-center'>
-                <div className="spinner-border text-primary" role="status">
-                    <span className="visually-hidden">Loading...</span>
-                </div>
-            </div>
+            <PacmanLoader
+                css={override}
+                size={30}
+                color={"#006778"}
+                loading={loading}
+            />
         )
     }
-
     return (
         <div className='container'>
             <div className='row'>
                 {randomUsers.map((randomUser) => (
-                    <div className='col'>
-                        <div className="card mb-3" style={{ width: "600px" }}>
-                            <div className="row g-0">
-                                <div className="col-md-4">
-                                    <img src={randomUser.picture.large} className="img-fluid rounded-start" alt="..."  />
-                                </div>
-                                <div className="col-md-8">
-                                    <div className="card-body">
-                                        <h5 className="card-title">{randomUser.name.title}. {randomUser.name.first} {randomUser.name.last}</h5>
-                                        <p className="card-text">Email: <a href="#">{randomUser.email}</a> <br /> Phone/Cell No: {randomUser.phone} / {randomUser.cell}</p>
-                                        <a href="#" className="btn btn-primary">See More</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div className='col-md-4'>
+                        <CardGroup>
+                            <Card style={{ width: '100%', marginBottom: '10px' }}>
+                                <Card.Body>
+                                    <Card.Title className='user-name'>{randomUser.name.title}. {randomUser.name.first} {randomUser.name.last}</Card.Title>
+                                </Card.Body>
+                                <ListGroup className="list-group-flush">
+                                    <ListGroupItem>Email: <a href="#">{randomUser.email}</a></ListGroupItem>
+                                    <ListGroupItem>Phone: {randomUser.phone}</ListGroupItem>
+                                    <ListGroupItem>Cell No: {randomUser.cell}</ListGroupItem>
+                                </ListGroup>
+                                <Card.Body>
+                                    <Button className='see-button'>See More</Button>
+                                </Card.Body>
+                            </Card>
+                        </CardGroup>
                     </div>
                 ))}
             </div>
