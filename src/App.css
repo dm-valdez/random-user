@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+* {   
+    font-family: 'Montserrat', sans-serif;
+}
+
+.nav {
+    width: auto;
+    margin-bottom: 30px;
+    background-color: #006778;
+}
+
+.nav-brand {
+    font-size: 25px;
+}
+
+.user-name {
+    color: #006778;
+}
+
+a {
+    color: #006778
+}
+
+.see-button {
+    width: 100%;
+    color: #006778;
+    background-color: white;
+    border-color: #006778;
+}
+
+.see-button:hover {
+    color: white;
+    background-color: #006778;
+    border-color: #006778;
+}
+
+.paginationButton {
+    width: 80%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+}
+
+.paginationButton a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 5px;
+    border: 1px solid #006778;
+    color: #006778;
+    cursor: pointer;
+}
+
+.paginationButton a:hover {
+    color: white;
+    background-color: #006778;
+}
+
+.paginationActive a {
+    color: white;
+    background-color: #006778;
+}
