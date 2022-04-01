@@ -1,17 +1,16 @@
 import React from 'react'
-import { Button } from 'react-bootstrap';
-import { Card, CardGroup } from 'react-bootstrap';
-import { ListGroup, ListGroupItem } from 'react-bootstrap';
-import Spinner from 'react-bootstrap/Spinner'
 import { css } from "@emotion/react";
 import { PacmanLoader } from 'react-spinners';
+import DisplayUser from './DisplayUser';
 
 const override = css`
   display: block;
   margin: 300px auto;
 `;
 
+
 const RandomUser = ({ randomUsers, loading }) => {
+    const usersList = randomUsers.map(randomUser => <DisplayUser randomUser={randomUser} />)
     if (loading) {
         return (
             <PacmanLoader
@@ -25,25 +24,7 @@ const RandomUser = ({ randomUsers, loading }) => {
     return (
         <div className='container'>
             <div className='row'>
-                {randomUsers.map((randomUser) => (
-                    <div className='col-md-4'>
-                        <CardGroup>
-                            <Card style={{ width: '100%', marginBottom: '10px' }}>
-                                <Card.Body>
-                                    <Card.Title className='user-name'>{randomUser.name.title}. {randomUser.name.first} {randomUser.name.last}</Card.Title>
-                                </Card.Body>
-                                <ListGroup className="list-group-flush">
-                                    <ListGroupItem>Email: <a href="#">{randomUser.email}</a></ListGroupItem>
-                                    <ListGroupItem>Phone: {randomUser.phone}</ListGroupItem>
-                                    <ListGroupItem>Cell No: {randomUser.cell}</ListGroupItem>
-                                </ListGroup>
-                                <Card.Body>
-                                    <Button className='see-button'>See More</Button>
-                                </Card.Body>
-                            </Card>
-                        </CardGroup>
-                    </div>
-                ))}
+                {usersList}
             </div>
         </div>
     );
