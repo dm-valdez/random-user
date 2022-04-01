@@ -16,10 +16,16 @@
 
 .user-name {
     color: #006778;
+    font-weight: 600;
 }
 
 a {
     color: #006778
+}
+
+.card {
+    width: 100%;
+    margin-bottom: 20px;
 }
 
 .see-button {
@@ -35,16 +41,27 @@ a {
     border-color: #006778;
 }
 
-.paginationButton {
+/* Modals */
+.modal-title {
+    margin-left: 20px;
+}
+.modal-image {
+    width: auto;
+    border-radius: 50px;
+}
+
+
+/* Paginations */
+.pagination {
     width: 80%;
-    height: 40px;
+    height: 10px;
     list-style: none;
     display: flex;
     justify-content: center;
-    margin: 50px auto;
+    margin: 100px auto;
 }
 
-.paginationButton a {
+.pagination a {
     padding: 10px;
     margin: 8px;
     border-radius: 5px;
@@ -53,7 +70,7 @@ a {
     cursor: pointer;
 }
 
-.paginationButton a:hover {
+.pagination a:hover {
     color: white;
     background-color: #006778;
 }
@@ -62,3 +79,8 @@ a {
     color: white;
     background-color: #006778;
 }
+
+/* .paginationDisabled a {
+    color: white;
+    background-color: grey;
+} */
