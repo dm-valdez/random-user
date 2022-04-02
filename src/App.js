@@ -6,30 +6,21 @@ import './App.css';
 import NavBar from './components/NavBar';
 import RandomUser from './components/RandomUser';
 
-// const itemsPerPage = JSON.parse(localStorage.getItem("filter"));
 
-// useEffect(() => {
-//   window.localStorage.setItem("filter", JSON.stringify(userPerPage));
-// }, [userPerPage]);
-
-// function items(userPerPage) {
-//   const selectedItems = userPerPage.target.value;
-//   setUserPerPage(selectedItems);
-// }
 
 function App() {
   const [randomUsers, setRandomUsers] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const [pageNumber, setPageNumber] = useState(0)
-  const [userPerPage, setUserPerPage] = useState(15)
+  const [userPerPage] = useState(15)
   const pagesVisited = pageNumber * userPerPage;
 
 
   // get data from the API
   useEffect(() => {
     setLoading(true);
-    axios.get('https://randomuser.me/api/?results=40')
+    axios.get('https://randomuser.me/api/?results=100') 
       .then(res => {
         console.log(res.data.results);
         setRandomUsers(res.data.results);
@@ -43,12 +34,12 @@ function App() {
 
   }, [])
 
+  // paginate function
   const displayUsers = randomUsers.slice(pagesVisited, pagesVisited + userPerPage)
-
   const pageCount = Math.ceil(randomUsers.length / userPerPage);
-
   //change page
   const changePage = ({ selected }) => setPageNumber(selected)
+
 
   return (
     <div>
@@ -73,5 +64,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
