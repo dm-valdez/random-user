@@ -10,7 +10,7 @@ const override = css`
 
 
 const RandomUser = ({ randomUsers, loading }) => {
-    const usersList = randomUsers.map(randomUser => <DisplayUser randomUser={randomUser} />)
+    const usersList = randomUsers.map(randomUser => <DisplayUser key={randomUser.login.uuid} randomUser={randomUser} />)
     if (loading) {
         return (
             <PacmanLoader

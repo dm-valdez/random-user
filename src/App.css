@@ -14,11 +14,7 @@
     font-size: 25px;
 }
 
-.user-name {
-    color: #006778;
-    font-weight: 600;
-}
-
+/* Cards */
 a {
     color: #006778
 }
@@ -27,31 +23,65 @@ a {
     width: 100%;
     margin-bottom: 20px;
 }
+.card-name {
+    color: #006778;
+    font-weight: 600;
+}
 
-.see-button {
+.card-button {
     width: 100%;
     color: #006778;
     background-color: white;
     border-color: #006778;
 }
 
-.see-button:hover {
+.card-button:hover {
+    color: white;
+    background-color: #006778;
+    border-color: #006778;
+}
+/* End Cards */
+
+/* Modals */
+.modal-header {
+    background-color: #006778;
+}
+
+.modal-image {
+    width: auto;
+    border-radius: 50px;
+    margin: auto 20px;
+}
+
+.modal-title {
+    color: white;
+}
+
+.modal-title p {
+    color: white;
+    font-size: 16px;
+    margin: auto;
+}
+
+
+.modal-body {
+    margin-left: 20px;
+}
+
+.modal-button {
     color: white;
     background-color: #006778;
     border-color: #006778;
 }
 
-/* Modals */
-.modal-title {
-    margin-left: 20px;
+.modal-button:hover {
+    color: white;
+    background-color: #0884ad;
+    border-color: #006778;
 }
-.modal-image {
-    width: auto;
-    border-radius: 50px;
-}
+/* End Modals */
 
-
-/* Paginations */
+/* Pagination */
 .pagination {
     width: 80%;
     height: 10px;
@@ -79,6 +109,8 @@ a {
     color: white;
     background-color: #006778;
 }
+
+/* End Pagination */
 
 /* .paginationDisabled a {
     color: white;
