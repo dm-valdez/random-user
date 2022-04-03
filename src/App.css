@@ -93,6 +93,8 @@ a {
     list-style: none;
     display: flex;
     justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
 }
 
 .page-numbers li {
@@ -101,6 +103,11 @@ a {
     border: 1px solid #006778;
     cursor: pointer;
     border-radius: 5px;
+}
+
+.page-numbers li:hover {
+    background-color: #006778;
+    color: white;
 }
 
 .page-numbers li.active {
