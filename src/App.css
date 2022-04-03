@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
-* {   
+* {
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -14,6 +14,10 @@
     font-size: 25px;
 }
 
+.form-select {
+    width: 200px;
+}
+
 /* Cards */
 a {
     color: #006778
@@ -23,6 +27,7 @@ a {
     width: 100%;
     margin-bottom: 20px;
 }
+
 .card-name {
     color: #006778;
     font-weight: 600;
@@ -40,6 +45,7 @@ a {
     background-color: #006778;
     border-color: #006778;
 }
+
 /* End Cards */
 
 /* Modals */
@@ -63,7 +69,6 @@ a {
     margin: auto;
 }
 
-
 .modal-body {
     margin-left: 20px;
 }
@@ -79,40 +84,53 @@ a {
     background-color: #0884ad;
     border-color: #006778;
 }
+
 /* End Modals */
 
+
 /* Pagination */
-.pagination {
-    width: 80%;
-    height: 10px;
+.page-numbers {
     list-style: none;
     display: flex;
     justify-content: center;
-    margin: 100px auto;
 }
 
-.pagination a {
+.page-numbers li {
     padding: 10px;
-    margin: 8px;
-    border-radius: 5px;
+    margin: 1px;
     border: 1px solid #006778;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.page-numbers li.active {
+    background-color: #006778;
+    color: white;
+}
+
+.page-numbers button {
+    background-color: white;
+    border: 1px solid #006778;
+    border-radius: 5px;
     color: #006778;
+    font-size: 1rem;
     cursor: pointer;
 }
 
-.pagination a:hover {
-    color: white;
+.page-numbers button:hover {
     background-color: #006778;
+    color: white;
 }
 
-.paginationActive a {
-    color: white;
-    background-color: #006778;
+.page-numbers button:focus {
+    outline: none;
 }
 
+.page-numbers button:disabled,
+button[disabled] {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: default;
+}
 /* End Pagination */
-
-/* .paginationDisabled a {
-    color: white;
-    background-color: grey;
-} */
