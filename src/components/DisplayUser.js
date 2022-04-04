@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Card, CardGroup } from 'react-bootstrap';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
-import { useState } from 'react';
 
 const DisplayUser = ({ randomUser }) => {
     const [showModal, setShowModal] = useState(false);
@@ -80,9 +79,10 @@ const DisplayUser = ({ randomUser }) => {
                                 setShowModal(true);
                                 firstRandomHex();
                                 secondRandomHex();
-                                }}>
-                                    More About {randomUser.name.first}
+                            }}>
+                                More About {randomUser.name.first}
                             </Button>
+                            
                         </Card.Body>
                     </Card>
                 </CardGroup>
@@ -91,4 +91,4 @@ const DisplayUser = ({ randomUser }) => {
     )
 }
 
-export default DisplayUser
+export default DisplayUser;
