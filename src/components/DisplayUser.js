@@ -44,7 +44,7 @@ const DisplayUser = ({ randomUser }) => {
                     <Card.Img src={randomUser.picture.large} className="modal-image" />
                     <Modal.Title className='modal-title'>
                         {randomUser.name.title}. {randomUser.name.first} {randomUser.name.last}
-                        <p>{randomUser.email}</p>
+                        <p><a href={`mailto:${randomUser.email}`}>{randomUser.email}</a></p>
                         <p>@{randomUser.login.username}</p>
                     </Modal.Title>
                 </Modal.Header>
@@ -57,9 +57,6 @@ const DisplayUser = ({ randomUser }) => {
                     <p><strong>NAT:</strong> {randomUser.nat}</p>
                     <p><strong>Favorite Color:</strong> {firstHex} {secondHex} </p>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button className='modal-button' onClick={() => setShowModal(false)} style={{ background: gradientColor() }}>Close</Button>
-                </Modal.Footer>
             </Modal>
 
             {/* display the list of users with the necessary information */}

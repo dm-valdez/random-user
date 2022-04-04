@@ -23,6 +23,15 @@ a {
     color: #006778
 }
 
+a:link {
+    text-decoration: none;
+}
+
+a:hover {
+    color: #006778;
+    text-decoration: underline;
+}
+
 .card {
     width: 100%;
     margin-bottom: 20px;
@@ -56,7 +65,7 @@ a {
 .modal-image {
     width: auto;
     border-radius: 50px;
-    margin: auto 20px;
+    margin: auto 10px;
 }
 
 .modal-title {
@@ -69,8 +78,17 @@ a {
     margin: auto;
 }
 
+.modal-title a:link {
+    color: white;
+    text-decoration: none;
+}
+
+.modal-title a:hover {
+    text-decoration: underline;
+}
+
 .modal-body {
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .modal-button {
