@@ -29,7 +29,6 @@ const RandomUser = () => {
         setLoading(true);
         axios.get('https://randomuser.me/api/?results=100')
             .then(res => {
-                console.log(res.data.results);
                 setRandomUsers(res.data.results);
                 setLoading(false);
             }).catch((error) => {
