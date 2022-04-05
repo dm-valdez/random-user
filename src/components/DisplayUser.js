@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Modal } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
 import { Card, CardGroup } from 'react-bootstrap';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
-const DisplayUser = ({ randomUser, loading }) => {
+const DisplayUser = ({ randomUser }) => {
     const [showModal, setShowModal] = useState(false);
     const [firstHex, setFirstHex] = useState();
     const [secondHex, setSecondHex] = useState();
@@ -28,6 +28,11 @@ const DisplayUser = ({ randomUser, loading }) => {
         return `linear-gradient(to right, ${firstHex}, ${secondHex})`;
     }
 
+    useEffect(() => {
+        setFirstHex(firstRandomHex);
+        setSecondHex(secondRandomHex);
+    }, [])
+
     // return all of the user but hide the modal
     return (
         <>
@@ -40,7 +45,8 @@ const DisplayUser = ({ randomUser, loading }) => {
                 className='modal'
                 aria-labelledby="example-modal-sizes-title-lg"
             >
-                <Modal.Header className='modal-header' closeButton style={{ background: gradientColor() }}>
+                <Modal.Header closeButton style={{ background: gradientColor() }}/>
+                <Modal.Header className='modal-header' >
                     <Card.Img src={randomUser.picture.large} className="modal-image" />
                     <Modal.Title className='modal-title'>
                         {randomUser.name.title}. {randomUser.name.first} {randomUser.name.last}
@@ -76,8 +82,6 @@ const DisplayUser = ({ randomUser, loading }) => {
                         <Card.Body>
                             <Button className='card-button' onClick={() => {
                                 setShowModal(true);
-                                firstRandomHex();
-                                secondRandomHex();
                             }}>
                                 More About {randomUser.name.first}
                             </Button>
