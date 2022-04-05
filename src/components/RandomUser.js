@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { css } from "@emotion/react";
-import { PacmanLoader } from 'react-spinners';
+// import { css } from "@emotion/react";
+// import { PacmanLoader } from 'react-spinners';
 import DisplayUser from './DisplayUser';
+import SkeletonLoader from './SkeletonLoader';
 
 import '../App.css';
 
 //  overriding the css of Loader
-const override = css`
-  display: block;
-  margin: 300px auto;
-`;
+// const override = css`
+//   display: block;
+//   margin: 300px auto;
+// `;
 
 const RandomUser = () => {
     const [randomUsers, setRandomUsers] = useState([]);
@@ -105,7 +106,7 @@ const RandomUser = () => {
             setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
         }
     };
-    
+
     // same function as next button that add ellipsis if the maximum page limit exceeds
     let pageIncrementButton = null;
     if (pages.length > maxPageNumberLimit) {
@@ -134,42 +135,42 @@ const RandomUser = () => {
             />
         )
 
-        
-
     // if can't get data from the API, perform loading screen
     if (loading) {
         return (
-            <PacmanLoader
-                css={override}
-                size={30}
-                color={"#006778"}
-                loading={loading}
-            />
+            <div className='container'>
+                <div className='row'>
+                    <SkeletonLoader /> <SkeletonLoader /> <SkeletonLoader />
+                    <SkeletonLoader /> <SkeletonLoader /> <SkeletonLoader />
+                    <SkeletonLoader /> <SkeletonLoader /> <SkeletonLoader />
+                </div>
+            </div>
         )
     }
+
     // else display all users
     return (
         <div className='container'>
             <label htmlFor="select">Set # of items per page</label>
-                <select
-                    size='sm'
-                    className='form-select form-select-sm mb-3'
-                    name='select'
-                    value={userPerPage}
-                    onChange={items}
-                >
-                    <option value={10}>10</option>
-                    <option value={15}>15</option>
-                    <option value={20}>20</option>
-                    <option value={30}>30</option>
-                    <option value={40}>40</option>
-                    <option value={50}>50</option>
-                    <option value={60}>60</option>
-                    <option value={70}>70</option>
-                    <option value={80}>80</option>
-                    <option value={90}>90</option>
-                    <option value={100}>100</option>
-                </select>
+            <select
+                size='sm'
+                className='form-select form-select-sm mb-3'
+                name='select'
+                value={userPerPage}
+                onChange={items}
+            >
+                <option value={10}>10</option>
+                <option value={15}>15</option>
+                <option value={20}>20</option>
+                <option value={30}>30</option>
+                <option value={40}>40</option>
+                <option value={50}>50</option>
+                <option value={60}>60</option>
+                <option value={70}>70</option>
+                <option value={80}>80</option>
+                <option value={90}>90</option>
+                <option value={100}>100</option>
+            </select>
             <div className='row'>
                 {usersList}
                 <ul className='page-numbers'>

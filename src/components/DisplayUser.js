@@ -4,7 +4,7 @@ import { Button } from 'react-bootstrap';
 import { Card, CardGroup } from 'react-bootstrap';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 
-const DisplayUser = ({ randomUser }) => {
+const DisplayUser = ({ randomUser, loading }) => {
     const [showModal, setShowModal] = useState(false);
     const [firstHex, setFirstHex] = useState();
     const [secondHex, setSecondHex] = useState();
@@ -64,7 +64,9 @@ const DisplayUser = ({ randomUser }) => {
                 <CardGroup className='card'>
                     <Card>
                         <Card.Body>
-                            <Card.Title className='card-name'>{randomUser.name.title}. {randomUser.name.first} {randomUser.name.last}</Card.Title>
+                            <Card.Title className='card-name'>
+                                {randomUser.name.title}. {randomUser.name.first} {randomUser.name.last}
+                            </Card.Title>
                         </Card.Body>
                         <ListGroup className="list-group-flush">
                             <ListGroupItem><strong>Email:</strong> <a href={`mailto:${randomUser.email}`}>{randomUser.email}</a></ListGroupItem>
@@ -79,7 +81,6 @@ const DisplayUser = ({ randomUser }) => {
                             }}>
                                 More About {randomUser.name.first}
                             </Button>
-                            
                         </Card.Body>
                     </Card>
                 </CardGroup>
