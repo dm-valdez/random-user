@@ -45,16 +45,28 @@ const DisplayUser = ({ randomUser }) => {
                 className='modal'
                 aria-labelledby="example-modal-sizes-title-lg"
             >
-                <Modal.Header closeButton style={{ background: gradientColor() }}/>
-                <Modal.Header className='modal-header' >
-                    <Card.Img src={randomUser.picture.large} className="modal-image" />
+                {/* <Modal.Header className='modal-close' closeButton style={{ background: gradientColor() }}/> */}
+                <Modal.Header className='modal-header' closeButton style={{ background: gradientColor() }} >
+                    {/* <Card.Img src={randomUser.picture.large} className="modal-image" /> */}
                     <Modal.Title className='modal-title'>
-                        {randomUser.name.title}. {randomUser.name.first} {randomUser.name.last}
-                        <p><a href={`mailto:${randomUser.email}`}>{randomUser.email}</a></p>
-                        <p>@{randomUser.login.username}</p>
+                        User Profile
+                        {/* {randomUser.name.title}. {randomUser.name.first} {randomUser.name.last} */}
+                        {/* <p><a href={`mailto:${randomUser.email}`}>{randomUser.email}</a></p> */}
+                        {/* <p>@{randomUser.login.username}</p> */}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body className='modal-body'>
+                    <div className='modal-body-header'>
+                        <div className='modal-images'>
+                            <Card.Img src={randomUser.picture.large} className="modal-image" />
+                        </div>
+                        <div className='modal-header-info'>
+                            <h1>{randomUser.name.title}. {randomUser.name.first} {randomUser.name.last}</h1>
+                            <p><a href={`mailto:${randomUser.email}`}>{randomUser.email}</a></p>
+                            <p>@{randomUser.login.username}</p>
+                        </div>
+                    </div>
+                    <hr />
                     <p><strong>Registered:</strong> {randomUser.registered.date.slice(0, 10)}</p>
                     <p><strong>Gender:</strong> {randomUser.gender.charAt(0).toUpperCase() + randomUser.gender.slice(1)}</p>
                     <p><strong>Date of Birth:</strong> {randomUser.dob.date.slice(0, 10)}</p>

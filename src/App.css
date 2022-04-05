@@ -19,19 +19,6 @@
 }
 
 /* Cards */
-a {
-    color: #006778
-}
-
-a:link {
-    text-decoration: none;
-}
-
-a:hover {
-    color: #006778;
-    text-decoration: underline;
-}
-
 .card {
     width: 100%;
     margin-bottom: 20px;
@@ -55,54 +42,68 @@ a:hover {
     border-color: #006778;
 }
 
+.list-group-flush a {
+    color: #006778
+}
+
+.list-group-flush a:link {
+    text-decoration: none;
+}
+
+.list-group-flush a:hover {
+    color: #006778;
+    text-decoration: underline;
+}
+
 /* End Cards */
 
 /* Modals */
-.modal-header {
-    background-color: #006778;
+.modal-title {
+    color: black;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.modal-body-header {
+    display: flex;
 }
 
 .modal-image {
     width: auto;
     border-radius: 50px;
-    margin: auto 10px;
 }
 
-.modal-title {
-    color: white;
+.modal-header-info {
+    margin: 5px 20px;
 }
 
-.modal-title p {
-    color: white;
-    font-size: 16px;
-    margin: auto;
+.modal-header-info h1 {
+    margin-top: 10px;
+    font-size: 30px;
+    color: #006778;
 }
 
-.modal-title a:link {
-    color: white;
+.modal-header-info p {
+    margin: 0;
+    font-size: 18px;
+}
+
+.modal-body {
+    font-size: 18px; 
+}
+
+.modal-header-info a:link {
+    color: #000;
     text-decoration: none;
 }
 
-.modal-title a:hover {
+.modal-header-info a:hover {
     text-decoration: underline;
 }
 
 .modal-body {
     margin-left: 10px;
 }
-
-.modal-button {
-    color: white;
-    background-color: #006778;
-    border-color: white;
-}
-
-.modal-button:hover {
-    color: white;
-    background-color: #0884ad;
-    border-color: #006778;
-}
-
 /* End Modals */
 
 
@@ -159,3 +160,90 @@ button[disabled] {
     cursor: default;
 }
 /* End Pagination */
+
+
+/* Media Queries */
+@media screen and (max-width: 1400px) {
+    .col-lg-4 {
+        width: 50%;
+    }
+    .modal-body-header {
+        display: flex;
+    }
+    .modal-image {
+        margin: 0;
+    }
+    .modal-header-info {
+        margin: 5px 20px;
+    }
+    .modal-header-info h1 {
+        margin-top: 10px;
+        font-size: 30px;
+    }
+    .modal-header-info p {
+        margin: 0 ;
+        font-size: 18px;
+    }
+    .modal-body {
+        font-size: 18px; 
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .col-lg-4 {
+        width:100%;
+    }
+    .modal-body-header {
+        display: flex;
+    }
+    .modal-image {
+        margin: 0;
+    }
+    .modal-header-info {
+        margin: 10px 20px;
+    }
+    .modal-header-info h1 {
+        margin-top: 10px;
+        font-size: 25px;
+    }
+    .modal-header-info p {
+        margin: 0 ;
+        font-size: 18px;
+    }
+    .modal-body {
+        font-size: 16px; 
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .list-group-flush {
+        font-size: 13px;
+    }
+    .modal-title {
+        font-size: 18px;
+    }
+    .modal-body-header {
+        display: flex;
+    }
+    .modal-image {
+        margin: 0;
+        width: 80px;
+        border-radius: 25px;
+    }
+    .modal-header-info {
+        margin: 0 10px;
+    }
+    .modal-header-info h1 {
+        margin-top: 10px;
+        font-size: 16px;
+    }
+    .modal-header-info p {
+        margin: 0 ;
+        font-size: 12px;
+    }
+    .modal-body {
+        margin: 0;
+        font-size: 13px; 
+    }
+}
+/* End Media Queries */
