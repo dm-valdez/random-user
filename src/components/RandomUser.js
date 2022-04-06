@@ -1,34 +1,33 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-// import { css } from "@emotion/react";
-// import { PacmanLoader } from 'react-spinners';
+import queryString from 'query-string';
+import { useHistory, useLocation } from "react-router-dom";
 import DisplayUser from './DisplayUser';
 import SkeletonLoader from './SkeletonLoader';
 
 import '../App.css';
 
-//  overriding the css of Loader
-// const override = css`
-//   display: block;
-//   margin: 300px auto;
-// `;
-
 const RandomUser = () => {
+    const location = useLocation();
+    const history = useHistory();
+    const path = window.location.pathname;
+    const initialQueryString = queryString.parse(location.search);
+    const initialPage = Number(initialQueryString.page) || 1;
+    
     const [randomUsers, setRandomUsers] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(initialPage);
     const [userPerPage, setUserPerPage] = useState();
 
     const [pageNumberLimit] = useState(5);
     const [maxPageNumberLimit, setMaxPageNumberLimit] = useState(5);
     const [minPageNumberLimit, setMinPageNumberLimit] = useState(0);
 
-
     // get data from the API
     useEffect(() => {
         setLoading(true);
-        axios.get('https://randomuser.me/api/?results=100')
+        axios.get('https://randomuser.me/api/?results=30')
             .then(res => {
                 setRandomUsers(res.data.results);
                 setLoading(false);
@@ -38,8 +37,9 @@ const RandomUser = () => {
             }).finally(() => {
                 setLoading(false);
             });
+            history.push(`${path}?page=${currentPage}&users=${userPerPage}`);
+    }, [path, history, userPerPage])
 
-    }, [])
 
     // get the value of user per page in the local storage (default value is 15)
     useEffect(() => {
@@ -58,10 +58,6 @@ const RandomUser = () => {
 
 
     // --- Pagination Events ---
-    const handleClick = (event) => {
-        setCurrentPage(Number(event.target.id));
-    };
-
     const pages = [];
     for (let i = 1; i <= Math.ceil(randomUsers.length / userPerPage); i++) {
         pages.push(i);
@@ -69,6 +65,7 @@ const RandomUser = () => {
 
     const indexOfLastItem = currentPage * userPerPage;
     const indexOfFirstItem = indexOfLastItem - userPerPage;
+    const paginate = pages => setCurrentPage(pages);
 
     const renderPageNumbers = pages.map((number) => {
         if (number < maxPageNumberLimit + 1 && number > minPageNumberLimit) {
@@ -76,7 +73,11 @@ const RandomUser = () => {
                 <li
                     key={number}
                     id={number}
-                    onClick={handleClick}
+                    onClick={(e) => {
+                        paginate(number);
+                        e.preventDefault();
+                        history.push(`${path}?page=${number}&users=${userPerPage}`);
+                    }}
                     className={currentPage === number ? "active" : null}
                 >
                     {number}
@@ -95,6 +96,7 @@ const RandomUser = () => {
             setMaxPageNumberLimit(maxPageNumberLimit + pageNumberLimit);
             setMinPageNumberLimit(minPageNumberLimit + pageNumberLimit);
         }
+        history.push(`${path}?page=${currentPage + 1}&users=${userPerPage}`);
     };
 
     // a function for previous button of pagination
@@ -105,6 +107,7 @@ const RandomUser = () => {
             setMaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
             setMinPageNumberLimit(minPageNumberLimit - pageNumberLimit);
         }
+        history.push(`${path}?page=${currentPage - 1}&users=${userPerPage}`);
     };
 
     // same function as next button that add ellipsis if the maximum page limit exceeds
@@ -123,6 +126,7 @@ const RandomUser = () => {
     const items = (userPerPage) => {
         const selectedItems = userPerPage.target.value;
         setUserPerPage(selectedItems);
+        history.push(`${path}?page=${currentPage}&users=${selectedItems}`);
     }
 
     // a function that slice and maps all users and display it.
@@ -151,7 +155,7 @@ const RandomUser = () => {
     // else display all users
     return (
         <div className='container'>
-            <label htmlFor="select">Set # of items per page</label>
+            <label htmlFor="select">Set # of users per page</label>
             <select
                 size='sm'
                 className='form-select form-select-sm mb-3'
