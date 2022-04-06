@@ -59,9 +59,9 @@
 
 /* Modals */
 .modal-title {
-    color: black;
+    color: #000;
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 500;
 }
 
 .modal-body-header {
@@ -80,7 +80,7 @@
 .modal-header-info h1 {
     margin-top: 10px;
     font-size: 30px;
-    color: #006778;
+    color: #000;
 }
 
 .modal-header-info p {
