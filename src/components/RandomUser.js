@@ -27,7 +27,7 @@ const RandomUser = () => {
     // get data from the API
     useEffect(() => {
         setLoading(true);
-        axios.get('https://randomuser.me/api/?results=30')
+        axios.get('https://randomuser.me/api/?results=500')
             .then(res => {
                 setRandomUsers(res.data.results);
                 setLoading(false);
