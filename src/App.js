@@ -15,9 +15,6 @@ function App() {
           <Route path="*">
             <Redirect to={{ pathname: '/' }} />
           </Route>
-          <Route path="/?page">
-            <Redirect to={{ pathname: '/?page=1' }} />
-          </Route>
         </Switch>
       </Router>
     </div>
